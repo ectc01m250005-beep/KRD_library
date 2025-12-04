@@ -221,7 +221,6 @@
         <a onclick="showPage('home')">ماڵەوە</a>
         <a onclick="showPage('writers')">نووسەرەکان</a>
         <a onclick="showPage('about')">دەربارە و پەیوەندی</a>
-        <a onclick="showPage('wishlist')">دڵخوازەکان</a>
         <a onclick="showPage('profile')" style="color:#4a6741;">پرۆفایل</a>
     </div>
 
@@ -242,6 +241,7 @@
             <button class="cat-btn" onclick="filterBooks('ڕۆمان')">ڕۆمان</button>
             <button class="cat-btn" onclick="filterBooks('مێژوو')">مێژوو</button>
             <button class="cat-btn" onclick="filterBooks('ئیسلامی')">ئیسلامی</button>
+            <button class="cat-btn" onclick="filterBooks('تەکنەلۆژیا')">تەکنەلۆژیا</button>
         </div>
 
         <div id="library-area" class="container">
@@ -270,32 +270,31 @@
             <div>
                 <div class="team-card">
                     <i class="fas fa-user-graduate" style="font-size: 40px; color: #cba135;"></i>
-                    <h3>ن^%$   ^#%^ق</h3>
-                    <p>N^*&   S$#!@</p>
+                    <h3>ناز صدیق</h3>
+                    <p>Naz Sideeq</p>
                 </div>
                 <div class="team-card">
                     <i class="fas fa-user-graduate" style="font-size: 40px; color: #cba135;"></i>
-                    <h3>ن*&%   %^#$ب</h3>
-                    <p>N^%n   &^$b</p>
+                    <h3>نیان تەیب</h3>
+                    <p>Nyan Tayib</p>
                 </div>
                 <div class="team-card">
                     <i class="fas fa-user-graduate" style="font-size: 40px; color: #cba135;"></i>
-                    <h3>ه$%^&   $%^یر</h3>
-                    <p>H#$%^&   #$%^&r</p>
+                    <h3>هێلین باپیر</h3>
+                    <p>Helen Bapir</p>
                 </div>
                 <div class="team-card">
                     <i class="fas fa-user-tie" style="font-size: 40px; color: #cba135;"></i>
-                    <h3>ئ^%$د   ک$%#@ی</h3>
-                    <p>A!@#$   #$%^i</p>
+                    <h3>ئەحمەد کانەبی</h3>
+                    <p>Ahmed Kanabi</p>
                 </div>
             </div>
 
             <div style="border: 1px dashed #4a6741; padding: 20px; display: inline-block; margin-top: 20px; border-radius: 100px;">
                 <i class="fas fa-university"></i> 
-            قوتابیانی<a href="https://epu.edu.iq/ise/" target="_blank" style="color:#4a6741;">بەشی ئەندازیاری سیستەمی زانیاری</a>
-                  <br>
-                 <a href="https://epu.edu.iq/" target="_blank" style="color:#4a6741;">زانکۆی پۆلیتەکنیکی هەولێر</a>
-              
+                قوتابیانی <a href="https://epu.edu.iq/ise/" target="_blank" style="color:#4a6741;">بەشی ئەندازیاری سیستەمی زانیاری</a>
+                <br>
+                <a href="https://epu.edu.iq/" target="_blank" style="color:#4a6741;">زانکۆی پۆلیتەکنیکی هەولێر</a>
             </div>
 
             <!-- Contact Form Section with ID for Scrolling -->
@@ -317,15 +316,6 @@
             </div>
         </div>
     </div>
-
-    <!-- 4. WISHLIST PAGE -->
-    <div id="wishlist" class="hidden">
-        <div class="container" style="padding: 50px;">
-            <h1>کتێبی دڵخواز</h1>
-            <p>لیستەکە بەتاڵە.</p>
-        </div>
-    </div>
-
     <!-- 5. PROFILE PAGE -->
     <div id="profile" class="hidden">
         <div class="container">
@@ -395,49 +385,62 @@
     <script>
         // DATA
         var books = [
-            { title: "مەم و زین", author: "ئەحمەدی خانی", type: "کلاسیک", img: "./Images/classic_book/mem_zin.jpg", desc: "شاڕۆمانی کوردییە..." },
-            { title: "دیوانی نالی", author: "نالی", type: "کلاسیک", img: "./Images/classic_book/diwani_nali.jpg", desc: "دامەزرێنەری قوتابخانەی بابان..." },
-            { title: "شەرەفنامە", author: "بەدلیسی", type: "مێژوو", img: "./Images/history_book/sharafnama.jpeg", desc: "گرنگترین سەرچاوەی مێژووییە..." },
-            { title: "ئێوارەی پەروانە", author: "بەختیار عەلی", type: "ڕۆمان", img: "./Images/novel_book/Ewarey_Perwane.jpg", desc: "ڕۆمانێکە باس لە بەستەڵەکی ڕۆحی..." },
-            { title: "تەفسیری نامی", author: "مەلا عەبدولکەریم", type: "ئیسلامی", img: "./Images/islamic_book/tafsiri_nami.jpeg", desc: "تەفسیرێکی کوردی..." },
-            { title: "حەسار و سەگەکان", author: "شێرکۆ بێکەس", type: "شیعر", img: "./Images/poetry_book/hasar.jpeg", desc: "ڕۆمانە شیعرێکی مۆدێرنە..." },
-            { title: "دیوانی مەحوی", author: "مەحوی", type: "کلاسیک", img: "./Images/classic_book/diwani_mahuy.jpg", desc: "شیعرەکانی مەحوی..." },
-            { title: "ژانی گەل", author: "ئیبراهیم ئەحمەد", type: "ڕۆمان", img: "./Images/novel_book/zhanigal.jpeg", desc: "یەکەم ڕۆمانی کوردییە..." },
-            { title: "چڵ فەرموودە", author: "وەرگێڕان", type: "ئیسلامی", img: "./Images/islamic_book/", desc: "فەرموودە..." },
-            { title: "دیوانی هێمن", author: "هێمن موکریانی", type: "شیعر", img: "./Images/poetry_book/diwani_hemn.jpg", desc: "شیعرەکانی هێمن..." },
-            { title: "مەلای جزیری", author: "مەلای جزیری", type: "کلاسیک", img: "./Images/classic_book/mala_jazir.png", desc: "عیرفان..." },
-            { title: "مێژووی ئەدەب", author: "سەجادی", type: "مێژوو", img: "./Images/history_book/mezhuy_adab.jpg", desc: "مێژووی ئەدەب..." },
-            { title: "عەقیدەی مەرزییە", author: "مەولەوی", type: "کلاسیک", img: "./Images/classic_book/aqiday_marzia.jpg", desc: "عەقیدە..." },
-            { title: "دیوانی پەشێو", author: "پەشێو", type: "شیعر", img: "./Images/poetry_book/diwani_pashew.jpeg", desc: "شاعیری بەرگری..." },
-            { title: "دیوانی گۆران", author: "گۆران", type: "شیعر", img: "./Images/poetry_book/diwani_goran.jpg", desc: "نوێخواز..." },
-            { title: "کورد لە سەدەکانی ناوەڕاست", author: "د. زرار سدیق", type: "مێژوو", img: "./Images/history_book/sadakaninawarast.jpeg", desc: "باس لە ڕۆڵی کورد دەکات." },
-            { title: "ئیمارەتی بابان", author: "حوسێن نازم", type: "مێژوو", img: "./Images/history_book/", desc: "مێژووی دروستبوون..." },
-            { title: "شاری مۆسیقارە سپییەکان", author: "بەختیار عەلی", type: "ڕۆمان", img: "./Images/novel_book/sharimosiqa.jpeg", desc: "ڕۆمانێکی فەنتازییە." },
-            { title: "دواهەمین هەناری دونیا", author: "بەختیار عەلی", type: "ڕۆمان", img: "./Images/novel_book/Dwahemin_henar.jpg", desc: "چیرۆکی موزەفەری." },
-            { title: "لابیرێنتا جنان", author: "حەسەنێ مەتێ", type: "ڕۆمان", img: "./Images/novel_book/", desc: "ڕۆمانێکی کورتی." },
-            { title: "ژیانی پێغەمبەر", author: "عەلائەدین سەجادی", type: "ئیسلامی", img: "./Images/islamic_book/", desc: "ژیاننامەی پێغەمبەر." },
-            { title: "باخچەی ئیمان", author: "کامەران عەلی", type: "ئیسلامی", img: "./Images/islamic_book/", desc: "کتێبێکە بۆ فێربوون." },
-            { title: "ریاض الصالحین", author: "وەرگێڕان", type: "ئیسلامی", img: "./Images/islamic_book/ryazsalhin.webp", desc: "کۆمەڵە فەرموودەیەکی." },
-            { title: "مێژووی کورد", author: "محەمەد ئەمین زەکی", type: "مێژوو", img: "./Images/history_book/", desc: "لێکۆڵینەوەیەکی وردە." },
-            { title: "خەمخۆر", author: "قانع", type: "شیعر", img: "./Images/poetry_book/", desc: "قانع شاعیری چەوساوەکانە." }
+            { title: "مەم و زین", author: "ئەحمەدی خانی", type: "کلاسیک", img: "./Images/classic_book/mem_zin.jpg", desc:"" },
+            { title: "دیوانی نالی", author: "نالی", type: "کلاسیک", img: "./Images/classic_book/diwani_nali.jpg", desc:""},
+            { title: "دیوانی مەحوی", author: "مەحوی", type: "کلاسیک", img: "./Images/classic_book/diwani_mahuy.jpg", desc:"" },
+            { title: "مەلای جزیری", author: "مەلای جزیری", type: "کلاسیک", img: "./Images/classic_book/mala_jazir.png", desc:"" },
+            { title: "عەقیدەی مەرزییە", author: "مەولەوی", type: "کلاسیک", img: "./Images/classic_book/aqiday_marzia.jpg", desc:"" },
+
+            { title: "حەسار و سەگەکان", author: "شێرکۆ بێکەس", type: "شیعر", img: "./Images/poetry_book/hasar.jpeg", desc:"" },
+            { title: "دیوانی هێمن", author: "هێمن موکریانی", type: "شیعر", img: "./Images/poetry_book/diwani_hemn.jpg", desc:"" },
+            { title: "دیوانی پەشێو", author: "پەشێو", type: "شیعر", img: "./Images/poetry_book/diwani_pashew.jpeg", desc:"" },
+            { title: "دیوانی گۆران", author: "گۆران", type: "شیعر", img: "./Images/poetry_book/diwani_goran.jpg", desc:"" },
+            { title: "دیوانی پیرەمێردی نەمر", author: "محمد ڕەسول هاوار", type: "شیعر", img: "./Images/poetry_book/piramerd.png", desc:"" },
+
+            { title: "ئێوارەی پەروانە", author: "بەختیار عەلی", type: "ڕۆمان", img: "./Images/novel_book/Ewarey_Perwane.jpg", desc:"" },
+            { title: "ژانی گەل", author: "ئیبراهیم ئەحمەد", type: "ڕۆمان", img: "./Images/novel_book/zhanigal.jpeg", desc:"" },
+            { title: "شاری مۆسیقارە سپییەکان", author: "بەختیار عەلی", type: "ڕۆمان", img: "./Images/novel_book/sharimosiqa.jpeg", desc:"" },
+            { title: "دواهەمین هەناری دونیا", author: "بەختیار عەلی", type: "ڕۆمان", img: "./Images/novel_book/Dwahemin_henar.jpg", desc:""},
+            { title: "لە عیشقەوە بۆ عیشق", author: " جاسم زاری", type: "ڕۆمان", img: "./Images/novel_book/ishq.png", desc:""},
+
+            { title: "شەرەفنامە", author: "بەدلیسی", type: "مێژوو", img: "./Images/history_book/sharafnama.jpeg", desc:""},
+            { title: "مێژووی ئەدەب", author: "سەجادی", type: "مێژوو", img: "./Images/history_book/mezhuy_adab.jpg", desc:""},
+            { title: "کورد لە سەدەکانی ناوەڕاست", author: "د. زرار سدیق", type: "مێژوو", img: "./Images/history_book/sadakaninawarast.jpeg",desc:"" },
+            { title: "مێژووی کورد و کوردستان", author: "حەمە گۆپاڵە", type: "مێژوو", img: "./Images/history_book/mezhuyKurd.jpg", desc:"" },
+            { title: "میرنشینی بابان", author: "عەلی خەزنەدار ", type: "مێژوو", img: "./Images/history_book/baban.jpg", desc:"" },
+
+
+            { title: "چل فەرموودە", author: "وەرگێڕان", type: "ئیسلامی", img: "./Images/islamic_book/chlFarmuda.jpg", desc:""},
+            { title: "تەفسیری نامی", author: "مەلا عەبدولکەریم", type: "ئیسلامی", img: "./Images/islamic_book/tafsiri_nami.jpeg",desc:"" },
+            { title: "ژیانی پێغەمبەر", author: "عەلائەدین سەجادی", type: "ئیسلامی", img: "./Images/islamic_book/zhyaniPexambar.jpg",desc:"" },
+            { title: "بێ ئاگایی", author: "بارۆ کوردی", type: "ئیسلامی", img: "./Images/islamic_book/be_agayi.png", desc:"" },
+            { title: "ریاض الصالحین", author: "وەرگێڕان", type: "ئیسلامی", img: "./Images/islamic_book/ryazsalhin.webp", desc:"" },
+
+            {title: "دەروازەیەک بەڕووی زمانی ++C", author: "ئارام محمد خەیات", type: "تەکنەلۆژیا", img: "./Images/technology/Cpp.png",desc:""},
+            {title: "ئاسان فێربە", author: "دیدات ئەحمەد", type: "تەکنەلۆژیا", img: "./Images/technology/ferba.png",desc:""},
+            {title: "گرافیک دیزاین", author: "محمد نور", type: "تەکنەلۆژیا", img: "./Images/technology/graphicDesign.png",desc:""},
+            {title: "زمانی HTML دینامیکی", author: "هەڵمەت غەریب", type: "تەکنەلۆژیا", img: "./Images/technology/htmlLang.png",desc:""},
+            {title: "سەرەتاکانی دیزاین", author: "شاد فەرەج", type: "تەکنەلۆژیا", img: "./Images/technology/saratayDesign.png", desc:""},
+           
+            
         ];
 
         var writers = [
-            { name: "ئەحمەدی خانی", title: "فەیلەسوف", img: "./Images/writers/xani.jpg", bio: "نووسەری 'مەم و زین'...", fullBio: "ئەحمەدی خانی (١٦٥٠-١٧٠٧)..." },
-            { name: "نالی", title: "شاعیر", img: "./Images/writers/nali.jpg", bio: "دامەزرێنەری قوتابخانەی بابان...", fullBio: "نالی..." },
-            { name: "شێرکۆ بێکەس", title: "شاعیری نوێ", img: "./Images/writers/sherko.jpg", bio: "شاعیری گەورەی هاوچەرخ...", fullBio: "شێرکۆ بێکەس..." },
-            { name: "بەختیار عەلی", title: "ڕۆماننووس", img: "./Images/writers/baxtiyar.jpg", bio: "بەناوبانگترین ڕۆماننووسی کورد...", fullBio: "بەختیار عەلی..." },
-            { name: "هێمن موکریانی", title: "شاعیر", img: "./Images/writers/hemin.jpg", bio: "شاعیری نیشتیمان...", fullBio: "هێمن..." },
-            { name: "مەحوی", title: "شاعیر", img: "./Images/writers/mahwi.jpg", bio: "شاعیری فەلسەفە...", fullBio: "مەحوی..." },
-            { name: "پیرەمێرد", title: "ڕۆژنامەوان", img: "./Images/writers/piramerd.jpg", bio: "خاوەنی ڕۆژنامەی ژین...", fullBio: "پیرەمێرد..." },
-            { name: "مەلای جزیری", title: "شاعیر", img: "./Images/writers/jaziri.jpg", bio: "میری عەشق...", fullBio: "جزیری..." },
-            { name: "عەبدوڵڵا گۆران", title: "شاعیر", img: "./Images/writers/goran.jpg", bio: "پێشەنگی شیعری نوێ...", fullBio: "عەبدوڵڵا گۆران..." },
-            { name: "ئیبراهیم ئەحمەد", title: "نووسەر", img: "./Images/writers/ibrahim.jpg", bio: "باوکی ڕۆمانی کوردی...", fullBio: "ئیبراهیم ئەحمەد..." },
-            { name: "شەرەفخانی بەدلیسی", title: "مێژوونووس", img: "./Images/writers/sharafkhan.jpg", bio: "نووسەری شەرەفنامە...", fullBio: "شەرەفخانی بەدلیسی..." },
-            { name: "مەولەوی", title: "شاعیر", img: "./Images/writers/mawlawi.jpg", bio: "شاعیری سروشت...", fullBio: "مەولەوی..." },
-            { name: "عەبدوڵڵا پەشێو", title: "شاعیر", img: "./Images/writers/pashew.jpg", bio: "شاعیری بەرگری...", fullBio: "عەبدوڵڵا پەشێو..." },
-            { name: "مەلا عەبدولکەریمی مودەریس", title: "زانا", img: "./Images/writers/mudaris.jpg", bio: "زانا و موفەسیر...", fullBio: "مەلا عەبدولکەریمی مودەریس..." },
-            { name: "محەمەد ئەمین زەکی", title: "مێژوونووس", img: "./Images/writers/zaki.jpg", bio: "مێژوونووسی نوێ...", fullBio: "محەمەد ئەمین زەکی بەگ..." }
+            { name: "ئەحمەدی خانی", title: "فەیلەسوف", img: "./Images/writers/xani.jpg", bio: "نووسەری 'مەم و زین'...", fullBio: "ئەحمەدی خانی (١٦٥٠ –١٧٠٧) شاعیر و نووسەر و ڕووناکبیری گەورەی کورد بووە. ڕووناکبیران ئەحمەدی خانی بە یەکەم کەس دادەنێن کە لەسەر کوردایەتی و نەتەوەخوازیی کوردی نووسیویەتی. بەناوبانگترین بەرھەمی کتێبی شیعری مەم و زینە کە چیرۆکێکی دڵدارانە دەگێڕێتەوە کە لە ساڵی ١٦٩٢ بە شێوەی کورمانجی نووسراوە." },
+            { name: "نالی", title: "شاعیر", img: "./Images/writers/nali.jpg", bio: "دامەزرێنەری قوتابخانەی بابان...", fullBio: "مەلا خدر ئەحمەدی شاوەیسی ئاڵی بەگی میکایلی ناسراو بە نالی (١٨٠٠ – ٢٣ی تشرینی دووەمی ١٨٧٧) بەردی بناغە و دامەزرێنەری خوێندنگەی شیعریی بابان و لە یەکەمین و بەناوبانگترین شاعیرانی شێوەزاری کوردیی ناوەندییە. لە دەشتی شارەزوور ھاتوەتە دنیاوە. ھەر لە تەمەنی منداڵی نراوەتە بەر خوێندن لە حوجرە. لە سەرەتاوە وردەپەرتووکی فارسی و قورئانی خوێندووە، لە چەندەھا شوێن و لای چەندەھا مامۆستای باشی ئەو سەردەمەی خۆی خوێندویەتی. دوای تەواوبوونی خوێندنەکەی، نالی مەلایەکی باش و ڕۆشنبیرێکی گەورەی لێدەردەچێت." },
+            { name: "شێرکۆ بێکەس", title: "شاعیری نوێ", img: "./Images/writers/sherko.jpg", bio: "شاعیری گەورەی هاوچەرخ...", fullBio: "شێرکۆ فایەق عەبدوڵڵا بێکەس (لەدایکبووی ٢ی ئایاری ١٩٤٠ لە سلێمانی، هەرێمی کوردستان – کۆچکردووی ٤ی ئابی ٢٠١٣ لە ستۆکھۆڵم، سوێد) شاعیرێکی کورد بوو. کوڕی هەڵبەستوانی کوردی سەدەی بیستەم فایەق بێکەس بوو، و یەکێک بوو لەو شاعیرانەی کە شیعری ھاوچەرخی کوردیی دامەزراندووە و شاعیرێکی زۆر بەتوانا بەنێوبانگ بووە. شێرکۆ بێکەس یەکەم وەزیری ڕۆشنبیری لە ھەرێمی کوردستان و ھەروەھا لە خولی یەکەمی پەرلەمانی کوردستان ئەندامی پەرلەمانیش بووە. شێکۆ بێکەس ئەندامی یەکێتیی نووسەرانی کورد، سەندیکای ڕۆژنامەنووسانی کوردستان و یەکێتیی نووسەرانی سوێد بوو." },
+            { name: "بەختیار عەلی", title: "ڕۆماننووس", img: "./Images/writers/baxtiyar.jpg", bio: "بەناوبانگترین ڕۆماننووسی کورد...", fullBio: "بەختیار عەلی لە ساڵی ١٩٦٠ لە گەڕەکی «ئیبراھیم پاشا» لە شاری سلێمانی لەدایکبووە. ڕۆماننووس، شاعیر و ڕۆشنبیرێکی کوردە، و یەکێکە لە دامەزرێنەرانی گۆڤاری ڕەھەند. یەکەم ڕۆمانی بە ناوی مەرگی تاقانەی دووەم، ساڵی ١٩٩٧ لە سوێد بڵاو کرایەوە. لە خۆپیشاندانەکانی ساڵی ١٩٨٣ لە ھەولێر بریندار دەبێت و دەست لە خوێندنی زانکۆ ھەڵدەگرێت و بە تەواوی خۆی بۆ کاری نووسین و ئەدەبیات یەکلا دەکاتەوە." },
+            { name: "هێمن موکریانی", title: "شاعیر", img: "./Images/writers/hemin.jpg", bio: "شاعیری نیشتیمان...", fullBio: "محەممەدئەمین شێخولئیسلامی موکری ناسراو بە ھێمن موکریانی (١ی ئازاری ١٩٢١ – ١٦ی نیسانی ١٩٨٦) شاعیر، ھێمن یەکێک بوو لە ھۆزانڤان و نووسەرانی کورد لە سەدەی بیستەمدا، لە بواری پاراستن و بووژاندنەوەی فەرھەنگ و وێژە، ھەقی خستووەتە سەر نەتەوەکەی، چونکە لە تاریک و ڕوونی بەیانی ژیانیدا، بۆ خڕ کردنەوەی کۆماکانی وێژەی کوردەواری و وردبوونەوە لە وشەکانی، بە کەوکردن و ھەڵاواردنی غەوارەکانی و سوورکردنی خەرمانی زمانی کوردی، کەوتە کار و تەنانەت گوڵ ھەڵگرتنەوە و پاشەرۆکیشی بۆ خەڵکی دیکە نەھێشتەوە." },
+            { name: "مەحوی", title: "شاعیر", img: "./Images/writers/mahwi.jpg", bio: "شاعیری فەلسەفە...", fullBio: "مەلا محەممەد کوڕی عوسمان باڵخی ناسراو بە مەحوی (١٨٣٦-١٩٠٦) مامۆستای ئایینی و یەکێک لە دیارترین ھۆنراوەنووسەکانی کورد بووە؛ و بە یەکێک لە چڵەپۆپەکانی شیعری کوردی دادەنرێت، ھۆنراوەکانی لە دەوری چەند تەوەرێکی جیاواز ئەسوڕێنەوە و سەرجەمی ھۆنراوەکانی لە دیوانی مەحویدا کۆکراونەتەوە" },
+            { name: "پیرەمێرد", title: "ڕۆژنامەوان", img: "./Images/writers/piramerd.jpg", bio: "خاوەنی ڕۆژنامەی ژین...", fullBio: "پیرەمێرد یان حاجی تۆفیق بەگ (١٨٦٧ – ١٩ی حوزەیرانی ١٩٥٠) شاعیر، نووسەر و ڕۆژنامەوانێکی کورد بوو. لە سلێمانی لەدایک بووە و لە لاویدا زانستی ئایینی لەوێ خوێندووە. شێخ مستەفای نەقیب و شێخ سەعیدی حەفید لە ١٨٩٨دا دەیبەن بۆ ئەستەمبوڵ. لەوێ لە کۆلێژی یاسا دەخوێنێت و لە حکوومەتی دەوڵەتی عوسمانیدا لە چەند پلەی میری و سیاسیدا دادەمەزرێت. لەدوای شۆڕشی شێخ سەعیدی پیران لە ١٩٢٥ و تێکچوونی بارودۆخ، دەگەڕێتەوە بۆ سلێمانی و تا دوا ساتی ژیانی ھەر لەوێ خەریکی کاری وێژەیی و ڕۆژنامەوانی دەبێت. " },
+            { name: "مەلای جزیری", title: "شاعیر", img: "./Images/writers/jaziri.jpg", bio: "میری عەشق...", fullBio: "شێخ ئەحمەدی جزیری ناسراو بە مەلای جزیری (١٥٧٠ – ١٦٤٠) شاعیرێکی کلاسیکی کوردە کە بە دامەزرێنەری شێوەزاری کلاسیزمی کورمانجی ژووروو سەر بە شێوەزاری بۆتانی دادەنرێت. جزیری لە گرنگترین شاعیرانی کلاسیکی کوردە و لەگەڵ ئەحمەدی خانی، فەقێ تەیران، مەلای باتە بە گرنگترین شاعیرە کۆنەکانی کورمانجی دادەنرێن. ئەو دیوانە شیعرێکی بە شێوەزاری کورمانجی لێ بەجێ ماوە." },
+            { name: "عەبدوڵڵا گۆران", title: "شاعیر", img: "./Images/writers/goran.jpg", bio: "پێشەنگی شیعری نوێ...", fullBio: "عەبدوڵڵا سلێمان ناسراو بە گۆران (١٩٠٤-١٩٦٢) شاعیر و ڕۆژنامەوان و چالاکی سیاسیی کورد بوو. لە ھەڵەبجە لەدایکبووە و تا ١٩٣٧ لە خوێندنگە سەرەتاییەکانی ئەو ناوچەیەدا مامۆستا بووە. پاشان چالاکیی سیاسی و ڕۆژنامەوانی دەست پێ دەکات و چەند جارێک دەخرێتە بەندیخانە. لە ١٩٥٢ەوە تا کۆتایی ژیانی لە زۆرێک لە ڕۆژنامە و گۆڤارە کوردییەکاندا وتار و بابەتی دەنووسی و چەند کتێبی ھۆنراوەشی نووسیوە. گرینگیی گۆران لەوەدایە کە یەکەم ھۆزانڤانیی نوێی کوردە کە شێوازی عەرووزیی عەرەبی لە ھۆنراوەی کوردیدا لابردووە و بە شێوازی فولکلۆری کوردی ھۆنراوەی نووسیوە." },
+            { name: "ئیبراهیم ئەحمەد", title: "نووسەر", img: "./Images/writers/ibrahim.jpg", bio: "باوکی ڕۆمانی کوردی...", fullBio: "ئیبراھیم ئەحمەد فەتاح ناسراو بە بلە (٦ی ئازاری ١٩١٤ – ٨ی نیسانی ٢٠٠٠) ڕووناکبیر و نووسەر و خەباتکاری ڕامیاری خەڵکی سلێمانی و باشووری کوردستان بووە. لە ڕۆژنامەکانی ژیان، خەبات، کوردستان کاری نووسینی کردووە. لە ساڵانی ٣٠یەوە ھاوکات لەگەڵ خوێندن، تێکۆشانی ڕامیاری دەستپێکردووە؛ بە جۆرێک دامەزرێنەی پارتی دیموکراتی کوردستانی عێراق بووە. لەبەر ھەلومەرجی تایبەتی ئەو کات، ڕەوانەی دەرەوەی وڵات دەبێت و تا دوایی ڕۆژی تەمەنی لە شاری لەندەن دەمێنێتەوە." },
+            { name: "شەرەفخانی بەدلیسی", title: "مێژوونووس", img: "./Images/writers/sharafkhan.jpg", bio: "نووسەری شەرەفنامە...", fullBio: "شەرەفخانی بدلیسی ( ١٥٤٣ – ١٦٠٣ یان ١٦٠٤) سیاسەتوان و مێژوونووسی ناوداری کورد و خاوەن کتێبی مێژووییی شەرەفنامە بوو. شەرفخان بەدلیسی کە لە گەورەترین ڕووناکبیران و نووسەرانی سەردەمی خۆیەتی بەنووسینی شەرەفنامە زانیاریی لەمەڕ جوگرافیا و ژیانی ڕامیاری و دەسەڵاتی کورد و زمان و ڕووە ھەمەجۆرەکانی کۆمەڵگای کوردیی ئەو دەمە تۆمارکردووە؛ و ناسراوە بە ئەمیری (امیرالامرا) ھەموی کورد و کوردستان." },
+            { name: "مەولەوی", title: "شاعیر", img: "./Images/writers/mawlawi.jpg", bio: "شاعیری سروشت...", fullBio: "سەید عەبدولڕەحیمی کوڕی سەعید تاوەگۆزی (١٨٠٦–١٨٨٢) ناسراو بە مەولەوی یان مەولەویی کورد شاعیری ناوداری کورد وە نەوەی عەللامە بەناو بانگ مەلا ئەبوبەکری موسەنفی چۆڕییە و سۆفیی تەریقەتی نەقشبەندی بوو کە بە شێوەزاری ھەورامی ھۆنراوەی داناوە و لە بواری شێعری ئەوین و دڵداریدا زۆر بەناوبانگە. لە ھۆنراوەکانیدا خۆی بە مەعدووم ناساندووە." },
+            { name: "عەبدوڵڵا پەشێو", title: "شاعیر", img: "./Images/writers/pashew.jpg", bio: "شاعیری بەرگری...", fullBio: "عەبدوڵڵا پەشێو (لەدایکبووی ١٩٤٦) شاعیرێکی کوردە. بەھۆی دژایەتیی ڕەخنەگرانەیەوە لە دەسەڵاتدارانی حکوومەتی ھەرێمی کوردستان وەک شاعیرێکی سیاسیش دەرکەوتووە و بە شیعر و دەربڕین کەموکوڕییەکانی کۆمەڵگە و سیاسەتی کوردیی داوەتە بەر ڕەخنە و بە شێوازی شیعر گوزارشتی لە بیر و بۆچوونەکانی کردووە." },
+            { name: "مەلا عەبدولکەریمی مودەریس", title: "زانا", img: "./Images/writers/mudaris.jpg", bio: "زانا و موفەسیر...", fullBio: "مەلا عەبدولکەریمی مودەریس (١٩٠١-٢٠٠٥) نووسەر، زانای ئایینی، شاعیر و موفتیی کوردی سەدەی بیستەمە. ئەو زیاتر لە 60 پەرتووکی ئایینی، مێژوویی و وێژەیی بڵاو کردووەتەوە. ھەروەھا تەفسیری قورئانی بە زمانی کوردی و عەرەبی ھەیە. ساغکردنەوە و شیکردنەوەی چەندین شاکاری شیعری کلاسیکی کوردی لە کارە گرنگەکانی تری ئەم کەسایەتییەیە. نموونەی ئەو شاعیرانە بریتین لە مەولەوی، نالی، مەحوی، فەقێ قادری ھەمەوەندی." },
+            { name: "محەمەد ئەمین زەکی", title: "مێژوونووس", img: "./Images/writers/zaki.jpg", bio: "مێژوونووسی نوێ...", fullBio: "محەمەدئەمین زەکی بەگ (١٨٨٠-١٩٤٨) مێژوونووس و سیاسەتوانێکی کورد بوو.  ساڵی ١٩٠٣ تا تەممووزی ١٩٢٤ لە لەشکری عوسمانیدا چەند جۆر پلەی بڕیووە، لەگەڵ گەڕانەوەشی بۆ ئێراق لە ١٩٢٥/٢/٢ تاکو ١٩٢٥/٧/١٥ فەرمانی دووەم پشکنەر فەرماندەی فێرگەی سەربازی ئێراقی بووە. ساڵانی ١٩٢٥-١٩٢٨-١٩٣٧ نوێنەرەی ھەڵبژێراوی بۆ یەکەمجار لە شالیارێتی عەبدولموحسین ئەلسەعدوندا بووە بە شالیاری (کارداری و ھامووشۆ) تا ١٩٤١/١١/١٠ بۆ ١٠ جار لە شالیاریتیەکانی زانستی، بەرگری، ئابووری و ھامۆشۆدا بووە لە ١٩٤٢/٢/١٠ لە بەر نەخۆشی بەیەکجاری دەستی لە کاروباری میری ھەڵگرت." }
         ];
 
         // FUNCTIONS
@@ -507,7 +510,6 @@
             document.getElementById("home").style.display = "none";
             document.getElementById("writers").style.display = "none";
             document.getElementById("about").style.display = "none";
-            document.getElementById("wishlist").style.display = "none";
             document.getElementById("profile").style.display = "none";
             
             document.getElementById(pageId).style.display = "block";
@@ -604,5 +606,3 @@
     </script>
 </body>
 </html>
-
-
